@@ -1,22 +1,24 @@
-{% set name = "zipline-reloaded" %}
-{% set version = "2.4" %}
+{ % set name = "zipline-reloaded" % }
+  { % set version = "2.4" % }
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: { { name|lower } }
+  version: { { version } }
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/zipline-reloaded-{{ version }}.tar.gz
   sha256: 8c533c1ccf5069715bf2e9bd5e87ea39a3f7c83f5ef2c00d74d7311c8f31ecf8
 
 build:
+  entry_points:
+    - zipline = zipline.__main__:main
   skip: true  # [py<38]
-  script: {{ PYTHON }} -m pip install . -vv
+  script: { { PYTHON } } -m pip install . -vv
   number: 0
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - { { compiler('c') } }
   host:
     - python
     - numpy
@@ -52,7 +54,7 @@ requirements:
     - pytables >=3.4.3
     - toolz >=0.8.2
     - exchange-calendars >=4.2.4
-    - {{ pin_compatible('numpy') }}
+    - { { pin_compatible('numpy') } }
 
 test:
   imports:
