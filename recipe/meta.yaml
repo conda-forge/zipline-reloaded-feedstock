@@ -14,7 +14,7 @@ build:
     - zipline = zipline.__main__:main
   skip: true  # [py<38]
   script: { { PYTHON } } -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   build:
