@@ -63,6 +63,7 @@ test:
     - tests
   commands:
     - pytest --reruns 5 -k "not nothing and not correlation_factors and not simple_beta_target and not test_regression_of_returns_factor"  tests
+    - zipline --help
   requires:
     - pytest >=7.2.0
     - pytest-timeout
