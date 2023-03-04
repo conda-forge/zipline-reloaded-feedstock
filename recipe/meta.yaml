@@ -10,9 +10,11 @@ source:
   sha256: 8c533c1ccf5069715bf2e9bd5e87ea39a3f7c83f5ef2c00d74d7311c8f31ecf8
 
 build:
+  entry_points:
+    - zipline = zipline.__main__:main
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -61,6 +63,7 @@ test:
     - tests
   commands:
     - pytest --reruns 5 -k "not nothing and not correlation_factors and not simple_beta_target and not test_regression_of_returns_factor"  tests
+    - zipline --help
   requires:
     - pytest >=7.2.0
     - pytest-timeout
