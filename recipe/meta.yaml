@@ -1,5 +1,5 @@
 {% set name = "zipline-reloaded" %}
-{% set version = "2.4" %}
+{% set version = "3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/zipline-reloaded-{{ version }}.tar.gz
-  sha256: 8c533c1ccf5069715bf2e9bd5e87ea39a3f7c83f5ef2c00d74d7311c8f31ecf8
+  sha256: d4988486447df2eb342816fee8ca51ebbc55124300e919e4cf04960443d528ec
 
 build:
   entry_points:
     - zipline = zipline.__main__:main
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   build:
