@@ -1,5 +1,5 @@
 {% set name = "zipline-reloaded" %}
-{% set version = "2.4" %}
+{% set version = "3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/zipline-reloaded-{{ version }}.tar.gz
-  sha256: 8c533c1ccf5069715bf2e9bd5e87ea39a3f7c83f5ef2c00d74d7311c8f31ecf8
+  sha256: d4988486447df2eb342816fee8ca51ebbc55124300e919e4cf04960443d528ec
 
 build:
   entry_points:
     - zipline = zipline.__main__:main
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -40,7 +40,7 @@ requirements:
     - multipledispatch >=0.6.0
     - networkx >=2.0
     - numexpr >=2.6.1
-    - pandas <1.6,>=1.3
+    - pandas >=2.0
     - patsy >=0.4.0
     - python-dateutil >=2.4.2
     - python-interface >=1.5.3
@@ -48,7 +48,7 @@ requirements:
     - requests >=2.9.1
     - scipy >=0.17.1
     - six >=1.10.0
-    - sqlalchemy <2,>=1.0.8a
+    - sqlalchemy >=2
     - statsmodels >=0.6.1
     - ta-lib >=0.4.09
     - pytables >=3.4.3
