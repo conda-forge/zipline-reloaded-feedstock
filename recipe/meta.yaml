@@ -1,13 +1,13 @@
 {% set name = "zipline-reloaded" %}
-{% set version = "3.0.3" %}
+{% set version = "3.0.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/zipline-reloaded-{{ version }}.tar.gz
-  sha256: 6dc914feb28942bb0078d4ee465049970bbeaabb1e419f8a5d2edfb10a89207e
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: d8676ca4ef7ce4bca34afe3e3fcbce6de1fc3b29b04e5cf97f02f82a890f1f99
 
 build:
   entry_points:
@@ -19,6 +19,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - numpy
