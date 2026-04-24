@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/zipline-reloaded-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/zipline-reloaded-{{ version }}.tar.gz
   sha256: 6dc914feb28942bb0078d4ee465049970bbeaabb1e419f8a5d2edfb10a89207e
 
 build:
@@ -14,11 +14,12 @@ build:
     - zipline = zipline.__main__:main
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - numpy
@@ -54,7 +55,6 @@ requirements:
     - pytables >=3.4.3
     - toolz >=0.8.2
     - exchange-calendars >=4.2.4
-    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
